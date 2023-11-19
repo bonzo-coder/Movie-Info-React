@@ -1,13 +1,18 @@
-
+import logo from '../assets/logo.png'
 
 
 export default function Header (props) {
     
     return (
-        <div>
+        <div className='searchBar'>
 
-            <h1>To jest header search</h1>
-            <input onChange={ () => props.handleChange(event)}/>
+            <div className='logo'>
+                <img src={logo} />
+            </div>
+            <div className='inputBox'>
+                <input onChange={ () => props.handleChange(event)}/>
+            </div>
+            <h2> Filters</h2>
         </div>
     )
 }

@@ -3,19 +3,50 @@ import React from 'react'
 
 export default function Body (props) {
 
-console.log(props)
+    console.log(props.data)
 
-const [movieData, setMovieData] = React.useState({})
-
-
+//const [movieData, setMovieData] = React.useState({})
 
 
-React.useEffect ( () => {
-    setMovieData( () => {
-        props.data.map( movie => console.log(movie))
+
+
+// React.useEffect ( () => {
+    
+//         props.data?.map( movie => {
+        
+//             const title = movie.originalTitleText.text;
+//             const releaseYear =movie.releaseYear.year;
+//             const imageUrl = movie.primaryImage.url;
+            
+//             setMovieData( () => {
+//                 <div>
+//                     <Movie 
+//                         title={title}
+//                         releaseYear={releaseYear}
+//                         imageUrl={imageUrl}
+//                     />
+//                 </div>
+//             })
+//         })
+    
+// }, [props.data])
+    const movieData = props.data?.map( movie => {
+        
+        const title = movie.Title;
+        const releaseYear =movie.Year;
+        const imageUrl = movie.Poster;
+        
+        console.log(title)
+        console.log(releaseYear)
+        console.log(imageUrl)
+        return (
+            <Movie 
+                title={title}
+                releaseYear={releaseYear}
+                imageUrl={imageUrl}
+            />
+        )
     })
-}, [props.data])
-
 
     
 
