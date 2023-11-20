@@ -35,6 +35,7 @@ export default function Body (props) {
         const title = movie.Title;
         const releaseYear =movie.Year;
         const imageUrl = movie.Poster;
+        const imdbID = movie.imdbID;
         
         console.log(title)
         console.log(releaseYear)
@@ -44,6 +45,7 @@ export default function Body (props) {
                 title={title}
                 releaseYear={releaseYear}
                 imageUrl={imageUrl}
+                imdbID={imdbID}
             />
         )
     })
