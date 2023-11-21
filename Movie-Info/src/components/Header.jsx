@@ -1,13 +1,16 @@
 import logo from '../assets/logo.png'
 import React from 'react';
 
+
 export default function Header (props) {
     
-    const inputReference = React.useRef(null);
+    const inputRef = React.useRef(null);
 
-    React.useEffect(() => {
-        inputReference.current.focus();
-    }, [])
+  React.useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
     return (
         <div className='searchBar'>
@@ -16,7 +19,7 @@ export default function Header (props) {
                 <img src={logo} />
             </div>
             <div className='inputBox'>
-                <input type="text" placeholder="Search"  ref={inputReference} onChange={ () => props.handleChange(event)}/>
+                <input type="text" placeholder="Search"  ref={inputRef} onChange={ () => props.handleChange(event)} className="custom-input"/>
             </div>
             <h2> Filters</h2>
         </div>
