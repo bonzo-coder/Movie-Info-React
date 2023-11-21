@@ -8,7 +8,7 @@ export default function movieDataProcess (props) {
         
        
         const title = movie.original_title;
-        const releaseYear =movie.release_date.slice(0,4);
+        const releaseYear =movie.release_date?.slice(0,4);
         const imageUrl = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
         //const imdbID = movie.imdbID;
         const movieId = movie.id;

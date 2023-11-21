@@ -20,8 +20,13 @@ export default function Body (props) {
     console.log(renderData)
 
     return (
-        <div className="movies">
-            {props.searchFor == "movie" && renderData}
+        <div>
+            <div className="movies">
+                {props.searchFor == "movie" && renderData}
+            </div>
+            <div className="actors">
+                {props.searchFor == "person" && renderData}
+            </div>
         </div>
     )
 }
