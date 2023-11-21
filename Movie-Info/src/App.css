@@ -34,13 +34,23 @@
   border-radius: 2vh;
 }
 /* Input box styling  */
+.inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 25vw;
+  height: 40%;
+}
+
 .inputBox {
-  width: 20%;
-  height: 56px;
+  width: 70%;
+  height: 100%;
   border-radius: 4px;
   position: relative;
   background-color: rgba(113, 117, 177, 0.51);
   transition: 0.3s all;
+  margin-right: auto;
 
 }
 
@@ -75,7 +85,7 @@
 
 .inputBox input {
   width: 100%;
-  height: 56px;
+  height: 100%;
   position: relative;
   padding: 0px 16px;
   border: none;
@@ -118,6 +128,21 @@
   transition: 0.1s all ease-in-out;
 }
 
+.select {
+  width: 30%;
+  height: 100%;
+  border-radius: 4px;
+  position: relative;
+  background-color: rgba(113, 117, 177, 0.51);
+  transition: 0.3s all;
+  margin-right: auto;
+  color: white;
+  border-color: transparent;
+  font-size: medium;
+  margin-left: 1px;
+  
+  
+}
 
 .movies {
   display: flex;
@@ -133,7 +158,7 @@
 }
 
 .movieBox:hover {
-  scale: 1.2;
+  scale: 1.5;
   transition: 0.3s all ease-in-out;
 }
 
@@ -148,6 +173,7 @@
   height: 15%;
   font-size: 100%;
   margin-top: -25%;
+  transition: 0.3s all ease-in-out;
 }
 
 .movieTitle > p {
@@ -161,6 +187,7 @@
   height: 75%;
   margin-top: 5%;
   margin-left: 10%;
+  transition: 0.3s all ease-in-out;
 }
 .movieImg > img {
   max-width: inherit;
@@ -168,6 +195,7 @@
   height: inherit;
   width: inherit;
   object-fit: cover;
+  transition: 0.3s all ease-in-out;
 }
 
 .movieYear {
@@ -177,4 +205,28 @@
   letter-spacing: 2px;
   font-size: 0.8em;
   margin-bottom: -0.5em;
+  transition: 0.3s all ease-in-out;
 }
+
+.overview {
+  display:none
+}
+
+.movieImg:hover .overview {
+  display: block;
+  position: absolute;
+  color: white;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  font-size: 0.3em;
+  transition: 0.3s all ease-in-out;
+  overflow: scroll;
+}
+
+.movieImg>img:hover {
+  opacity: 0.12;
+  transition: 0.3s all ease-in-out;
+}
+
+

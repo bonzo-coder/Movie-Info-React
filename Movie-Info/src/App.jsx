@@ -7,39 +7,44 @@ import Body from './components/Body'
 
 
 function App() {
-  const apiKey = 'e55ded36';
+  const apiKey = 'dcea23fcd1a781899697fca8975d293f';
 
+  // "url search"
   const [search, setSearch] = React.useState(`http://www.omdbapi.com/?apikey=${apiKey}&s=harry`)
+  // movie data
   const [data, setData] = React.useState(null)
-  console.log(search)
+  // movie or actor state
+  const [searchFor, setSearchFor] = React.useState("movie")
+
   const handleChange = (event) => {
-    setSearch(event.target.value)  
+    setSearch(event.target.value) 
+  }
+
+  const handleSearchType = (event) => {
+    setSearchFor(event.target.value)
   }
   //"https://moviesdatabase.p.rapidapi.com/titles/search/akas/Harry"
   
  
     //MOVIE DATA
-    React.useEffect ( () => {
-        const url = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}`;
-        const options = {
-            method: 'GET',
-            // headers: {
-            //     'X-RapidAPI-Key': 'cc7b2fd625msh8fb5f8684e4bee5p157bb9jsn803fd219ec82',
-            //     'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
-            // }
-        };
-
-        console.log(url)
-        const fetchData = async () => {
+    React.useEffect ( () => {  
+      //let url = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}`;
+      const url = `https://api.themoviedb.org/3/search/${searchFor}?query=${search}&api_key=${apiKey}`
+      const options = {
+        method: 'GET',
+      }
+      
+      console.log(url)
+      const fetchData = async () => {
             try {
               const response = await fetch(url, options);
               const json = await response.json();
-              setData(json.Search);
+              console.log(json)
+              setData(json.results);
             } catch (error) {
               console.log("error", error);
             }
           };
-      
           fetchData();
     }, [search]);
 
@@ -47,8 +52,12 @@ function App() {
   return (
     <>
       <div>
-          <Header handleChange={handleChange}/>
-          <Body data={data}/>
+          <Header 
+            handleChange={handleChange}
+            handleSearchType={handleSearchType}/>
+          <Body 
+            data={data}
+            searchFor={searchFor}/>
       </div>
     </>
   )

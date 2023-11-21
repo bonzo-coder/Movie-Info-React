@@ -14,9 +14,13 @@ export default function Movie (props) {
             
                 <div className="movieImg" onClick={() => openInNewTab()}>
                     <img src={props.imageUrl}/>
+                    <div className="overview">
+                        <p>{props.overview}</p>
+                    </div>
                 </div>
             
             <div className="movieTitle"><p>{props.title}</p></div>
+            <div className="movieMark"><p>{props.reviewMark}</p></div>
         </div>
     )
 } 

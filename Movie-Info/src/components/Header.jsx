@@ -18,10 +18,15 @@ export default function Header (props) {
             <div className='logo'>
                 <img src={logo} />
             </div>
-            <div className='inputBox'>
-                <input type="text" placeholder="Search"  ref={inputRef} onChange={ () => props.handleChange(event)} className="custom-input"/>
+            <div className='inputs'>
+                <div className='inputBox'>
+                    <input type="text" placeholder="Search"  ref={inputRef} onChange={ () => props.handleChange(event)} className="custom-input"/>
+                </div>
+                <select className="select" onChange={() => props.handleSearchType(event)}>
+                    <option value="movie">Movie</option>
+                    <option value={"person"}>Actor</option>
+                </select>
             </div>
-            <h2> Filters</h2>
         </div>
     )
 }

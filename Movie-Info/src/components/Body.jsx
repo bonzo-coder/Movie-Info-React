@@ -1,60 +1,27 @@
 import Movie from './Movie'
 import React from 'react'
+import movieDataProcess from '../functions/movieData'
+import actorDataProcess from '../functions/actorData'
 
 export default function Body (props) {
 
-    console.log(props.data)
+    console.log(props)
+    const [renderData, setRenderData] = React.useState()
 
-//const [movieData, setMovieData] = React.useState({})
-
-
-
-
-// React.useEffect ( () => {
+        React.useEffect ( () => {
+        if (props.searchFor == "movie") {
+            setRenderData(movieDataProcess(props))
+        } else {
+            setRenderData(actorDataProcess(props))
+        }
     
-//         props.data?.map( movie => {
-        
-//             const title = movie.originalTitleText.text;
-//             const releaseYear =movie.releaseYear.year;
-//             const imageUrl = movie.primaryImage.url;
-            
-//             setMovieData( () => {
-//                 <div>
-//                     <Movie 
-//                         title={title}
-//                         releaseYear={releaseYear}
-//                         imageUrl={imageUrl}
-//                     />
-//                 </div>
-//             })
-//         })
-    
-// }, [props.data])
-    const movieData = props.data?.map( movie => {
-        
-        const title = movie.Title;
-        const releaseYear =movie.Year;
-        const imageUrl = movie.Poster;
-        const imdbID = movie.imdbID;
-        
-        console.log(title)
-        console.log(releaseYear)
-        console.log(imageUrl)
-        return (
-            <Movie 
-                title={title}
-                releaseYear={releaseYear}
-                imageUrl={imageUrl}
-                imdbID={imdbID}
-            />
-        )
-    })
+    }, [props.data])
 
-    
+    console.log(renderData)
 
     return (
         <div className="movies">
-            {props.data && movieData}
+            {props.searchFor == "movie" && renderData}
         </div>
     )
 }
