@@ -1,7 +1,7 @@
 
 
 export default function Movie (props) {
-    console.log(props)
+   
 
     const openInNewTab = () => {
         window.open(`https://www.imdb.com/title/${props.imdbID}/`, "_blank", 'noopener,noreferrer');
@@ -20,7 +20,7 @@ export default function Movie (props) {
                 </div>
             
             <div className="movieTitle"><p>{props.title}</p></div>
-            <div className="movieMark"><p>{props.reviewMark}</p></div>
+            <div className="movieMark"><p>{props.reviewMark.toFixed(1)}<span>/10</span></p></div>
         </div>
     )
 } 

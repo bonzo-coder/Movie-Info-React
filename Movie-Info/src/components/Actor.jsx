@@ -1,7 +1,7 @@
 import Movie from "./Movie"
 
 export default function Actor (props) {
-    console.log(props)
+    
 
     // const openInNewTab = () => {
     //     window.open(`https://www.imdb.com/title/${props.imdbID}/`, "_blank", 'noopener,noreferrer');

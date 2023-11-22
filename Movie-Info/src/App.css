@@ -17,9 +17,6 @@
   margin-top: 0;
   margin-left: -4em;
   background-color: black;
-  
-  
-
 }
 
 .logo {
@@ -32,6 +29,7 @@
   width: 100%;
   height: 100%;
   border-radius: 2vh;
+  opacity: 0.9;
 }
 /* Input box styling  */
 .inputs {
@@ -41,107 +39,113 @@
   margin: auto;
   width: 25vw;
   height: 40%;
+  margin-left: 23em;
 }
 
 .inputBox {
   width: 70%;
   height: 100%;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   position: relative;
-  background-color: rgba(113, 117, 177, 0.51);
+  background-color: rgba(96, 100, 151, 0.551);
   transition: 0.3s all;
   margin-right: auto;
 
 }
 
 .inputBox:hover {
-  background-color: rgba(255, 255, 255, 0.45);
+  background-color: rgba(96, 100, 151, 0.551);
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
+  transition: 0.3s all;
 }
 
-.inputBox input {
-  padding: 24px 16px 8px 16px;
-}
-
-.inputBox:focus input + label {
-  top: 4px;
-  opacity: 1;
-  color: #28cc70;
-}
-
-.inputBox.locked {
-  pointer-events: none;
- }
- 
- .inputBox > button {
-  visibility: hidden;
- }
-
- .custom-input:focus {
-  border: 2px solid #3498db; /* Change border color on focus */
-  background-color: #363442; /* Change background color on focus */
-  /* Add any other styles you want to apply when the input is focused */
-}
-
-.inputBox input {
+.custom-input {
   width: 100%;
   height: 100%;
   position: relative;
-  padding: 0px 16px;
+  text-align: center;
   border: none;
+  color: white;
   border-radius: 4px;
   font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
-  font-size: 16px;
+  font-size: 1.2em;
   font-weight: 400;
   line-height: normal;
   background-color: transparent;
-  color: #282828;
   outline: none;
-  box-shadow: 0px 4px 20px 0px transparent;
   transition: 0.3s background-color ease-in-out, 0.3s box-shadow ease-in-out, 0.1s padding ease-in-out;
   -webkit-appearance: none;
-}
-.inputBox input::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.8);
-}
-.inputBox input::-moz-placeholder {
-  color: rgba(255, 255, 255, 0.8);
-}
-.inputBox input:-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.8);
-}
-.inputBox input:-moz-placeholder {
-  color: rgba(255, 255, 255, 0.8);
+  padding: 0px;
+  outline: none;
+  border: none;
 }
 
-.inputBox input + label {
-  position: absolute;
-  top: 24px;
-  left: 16px;
-  font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 24px;
-  color: #ffffff;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.1s all ease-in-out;
+.custom-input:focus-within {
+  max-width: 100%;
+  max-height: 100%;
+  box-shadow: inset 0 0 10px 5px rgba(75, 169, 251, 0.653);
+  background-color: #363442; 
+  color: white;
+  outline-offset: 0;
 }
 
-.select {
+.custom-select {
   width: 30%;
   height: 100%;
   border-radius: 4px;
+  border: none;
   position: relative;
-  background-color: rgba(113, 117, 177, 0.51);
+  background-color: rgba(96, 100, 151, 0.551);
   transition: 0.3s all;
   margin-right: auto;
   color: white;
   border-color: transparent;
   font-size: medium;
   margin-left: 1px;
-  
-  
+  -webkit-appearance: none;
+}
+
+.select {
+  appearance: none;
+  /*  safari  */
+  border: none;
+  -webkit-appearance: none;
+  /*  other styles for aesthetics */
+  width: 100%;
+  font-size: 1.15rem;
+  -webkit-appearance: initial;
+  padding: 12% 1.8em 0.675em 1em;
+  -webkit-appearance: none;
+  text-align: center;
+  background-color:transparent;
+  border-radius: 0.25rem;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+
+.custom-select::before,
+.custom-select::after {
+  --size: 0.3rem;
+  content: "";
+  position: absolute;
+  right: 1rem;
+  pointer-events: none;
+}
+
+.custom-select::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid black;
+  top: 40%;
+}
+
+.custom-select::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid black;
+  top: 55%;
 }
 
 .movies {
@@ -170,16 +174,31 @@
 .movieTitle {
   
   width: 100%;
-  height: 5%;
+  height: 14%;
   font-size: 100%;
   margin-top: -40%;
   transition: 0.3s all ease-in-out;
 }
 
 .movieTitle > p {
+  height: 100%;
   font-size:1.2em;
   overflow: scroll;
   text-overflow: clip; 
+}
+
+.movieMark {
+  margin-top: 1em;
+}
+.movieMark > p {
+  margin-top: 2em;
+  font-size: 1.3em;
+  color: #f5c711bc;
+
+}
+.movieMark > p > span {
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.76);
 }
 
 .movieImg {

@@ -1,13 +1,9 @@
 import Movie from "../components/Movie";
 
 export default function movieDataProcess (props) {
-    console.log(props)
-    console.log("movie prop")
-
+    
     const movieData = props.data?.map( movie => {
-        
-       
-        const title = movie.original_title;
+        const title = movie.title;
         const releaseYear =movie.release_date?.slice(0,4);
         const imageUrl = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
         //const imdbID = movie.imdbID;

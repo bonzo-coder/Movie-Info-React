@@ -2,11 +2,12 @@ import Actor from '../components/Actor'
 import Movie from '../components/Movie'
 
 export default function actorDataProcess (props) {
-    console.log(props)
-    console.log("actor prop")
 
     const actorData = props.data?.map( actor => {
         
+        if (actor.popularity < 1) {
+            return
+        }
        
         const name = actor.name;
         const imageUrl = "https://image.tmdb.org/t/p/w500" + actor.profile_path;
@@ -31,11 +32,11 @@ export default function actorDataProcess (props) {
 
         })
 
-        console.log(name)
-        console.log(knownFor)
-        console.log(actorId)
-        console.log(imageUrl)
-
+        // rejects actors without lasname
+        if ( name.indexOf(' ') == -1) {
+            return
+        }
+        // rejects actors without picture 
         if( imageUrl == "https://image.tmdb.org/t/p/w500null" ) {
             return
         }
@@ -50,6 +51,7 @@ export default function actorDataProcess (props) {
         )
     })
 
+    console.log(actorData)
     return actorData
 
 }

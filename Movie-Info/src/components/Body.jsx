@@ -5,7 +5,6 @@ import actorDataProcess from '../functions/actorData'
 
 export default function Body (props) {
 
-    console.log(props)
     const [renderData, setRenderData] = React.useState()
 
         React.useEffect ( () => {
