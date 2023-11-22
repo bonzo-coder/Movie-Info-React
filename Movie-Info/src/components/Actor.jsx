@@ -13,9 +13,12 @@ export default function Actor (props) {
         <div className="actorBox">
             <div className="actorImg" >
                 <img src={props.imageUrl}/>
+                <div>{props.name}</div>
             </div>
-            <div>{props.name}</div>
-            <div>{props.knownFor}</div>
+            <div className="actorMovies">
+                {props.knownFor}
+            </div>
+            
         </div>
             
                 

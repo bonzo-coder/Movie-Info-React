@@ -15,7 +15,7 @@ export default function Movie (props) {
                 <div className="movieImg" onClick={() => openInNewTab()}>
                     <img src={props.imageUrl}/>
                     <div className="overview">
-                        <p>{props.overview}</p>
+                        <div className="scroll">{props.overview}</div>
                     </div>
                 </div>
             

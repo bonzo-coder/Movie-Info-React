@@ -1,6 +1,6 @@
 #root {
   margin: 0 auto;
-  padding: 2em;
+  padding: 0;
   text-align: center;
   background-color: rgb(38, 38, 46);
   
@@ -25,7 +25,7 @@
 .logo {
   width: 12vw;
   height: 10vh;
-  
+  margin-left: 2em;
 }
 
 .logo > img {
@@ -170,9 +170,9 @@
 .movieTitle {
   
   width: 100%;
-  height: 15%;
+  height: 5%;
   font-size: 100%;
-  margin-top: -25%;
+  margin-top: -40%;
   transition: 0.3s all ease-in-out;
 }
 
@@ -200,33 +200,71 @@
 
 .movieYear {
   width: 100%;
-  height: 10%;
+  height: 5%;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   letter-spacing: 2px;
   font-size: 0.8em;
-  margin-bottom: -0.5em;
+  margin-bottom: 0.5em;
   transition: 0.3s all ease-in-out;
 }
 
 .overview {
-  display:none
+  display:none;
 }
 
 .movieImg:hover .overview {
   display: block;
   position: absolute;
   color: white;
+  height: 50%;
   top: 10%;
   left: 50%;
   transform: translate(-50%, 0%);
-  font-size: 0.3em;
+  font-size: 0.5em;
   transition: 0.3s all ease-in-out;
-  overflow: scroll;
+  overflow: scroll; 
 }
 
-.movieImg>img:hover {
+.movieImg:has(.scroll:hover) > img {
   opacity: 0.12;
   transition: 0.3s all ease-in-out;
 }
 
+.scroll {
+  color: rgba(255, 255, 255, 0.982);
+}
 
+
+.actorBox {
+  display: flex;
+  width: 90%;
+  height: 40vh;
+  border: 2px black solid;
+  margin: 1px;
+  border-radius: 5px;
+}
+
+.actorImg {
+  width: 10%;
+  justify-content: center;
+  align-items: center;
+}
+
+.actorImg > img {
+  max-width: 90%;
+  max-height: inherit;
+  padding: 2em;
+  object-fit: cover;
+  transition: 0.3s all ease-in-out;
+  border-radius: 5px;
+}
+
+.actorImg > div {
+  text-align: center;
+  color: white;
+}
+
+.actorMovies {
+  display: flex;
+  margin-left: 10%;
+}
