@@ -3,7 +3,7 @@
   padding: 0;
   text-align: center;
   background-color: rgb(38, 38, 46);
-  
+  height: 100%;
   width: 100vw;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
@@ -12,7 +12,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 15vh;
+  height: 15vh; 
   padding: 3%;
   margin-top: 0;
   margin-left: -4em;
@@ -22,12 +22,14 @@
 .logo {
   width: 12vw;
   height: 10vh;
-  margin-left: 2em;
+  margin-left: max(3%, 40px);
 }
 
 .logo > img {
   width: 100%;
   height: 100%;
+  min-width: 80px;
+  min-height: 50px;
   border-radius: 2vh;
   opacity: 0.9;
 }
@@ -39,12 +41,14 @@
   margin: auto;
   width: 25vw;
   height: 40%;
-  margin-left: 23em;
+  margin-left: 25%;
 }
 
 .inputBox {
   width: 70%;
   height: 100%;
+  min-width: 100px;
+  min-height: 30px;
   border-radius: 0.25rem;
   position: relative;
   background-color: rgba(96, 100, 151, 0.551);
@@ -62,6 +66,8 @@
 .custom-input {
   width: 100%;
   height: 100%;
+  min-width: 100px;
+  min-height: 30px;
   position: relative;
   text-align: center;
   border: none;
@@ -89,9 +95,12 @@
   outline-offset: 0;
 }
 
+/* select styling */
 .custom-select {
   width: 30%;
+  min-width: 100px;
   height: 100%;
+  min-height: 30px;
   border-radius: 4px;
   border: none;
   position: relative;
@@ -107,14 +116,12 @@
 
 .select {
   appearance: none;
-  /*  safari  */
+  -webkit-appearance: none; /*  safari styling  */
   border: none;
-  -webkit-appearance: none;
-  /*  other styles for aesthetics */
   width: 100%;
-  font-size: 1.15rem;
+  font-size: 100%;
   -webkit-appearance: initial;
-  padding: 12% 1.8em 0.675em 1em;
+  padding: 12% 37% 12% 3%;
   -webkit-appearance: none;
   text-align: center;
   background-color:transparent;
@@ -123,7 +130,6 @@
   cursor: pointer;
   outline: none;
 }
-
 
 .custom-select::before,
 .custom-select::after {
@@ -148,6 +154,7 @@
   top: 55%;
 }
 
+/* movies styling */
 .movies {
   display: flex;
   flex-wrap: wrap;
@@ -155,7 +162,6 @@
 
 .movieBox {
   width: 12vw;
-  height: 40vh;
   margin: 3%;
   color: rgba(255, 255, 255, 0.604);
   transition: 0.3s all ease-in-out;
@@ -171,27 +177,37 @@
   transition: 0.2s all ease-in-out;
 }
 
-.movieTitle {
-  
+.movieYear {
   width: 100%;
-  height: 14%;
-  font-size: 100%;
-  margin-top: -40%;
+  height: 5%;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  letter-spacing: 2px;
+  font-size: 0.8em;
+  margin-bottom: 0.5em;
   transition: 0.3s all ease-in-out;
 }
 
-.movieTitle > p {
-  height: 100%;
+.movieTitle {
+  width: 100%;
+  height: 14%;
+  font-size: 100%;
+  margin-top: 1em;
+  transition: 0.3s all ease-in-out;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.movieTitle > div {
   font-size:1.2em;
-  overflow: scroll;
-  text-overflow: clip; 
+  overflow: scroll; 
 }
 
 .movieMark {
-  margin-top: 1em;
+  margin-top: 0em;
 }
 .movieMark > p {
-  margin-top: 2em;
+  margin-top: 0.5em;
   font-size: 1.3em;
   color: #f5c711bc;
 
@@ -203,12 +219,12 @@
 
 .movieImg {
   width: 80%;
-  height: 75%;
   margin-top: 5%;
   margin-left: 10%;
   transition: 0.3s all ease-in-out;
 }
 .movieImg > img {
+  margin-top: 1em;
   max-width: inherit;
   max-height: inherit;
   height: inherit;
@@ -217,25 +233,16 @@
   transition: 0.3s all ease-in-out;
 }
 
-.movieYear {
-  width: 100%;
-  height: 5%;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  letter-spacing: 2px;
-  font-size: 0.8em;
-  margin-bottom: 0.5em;
-  transition: 0.3s all ease-in-out;
-}
-
 .overview {
   display:none;
 }
 
 .movieImg:hover .overview {
+  margin-top: 1.2em;
   display: block;
   position: absolute;
   color: white;
-  height: 50%;
+  height: 8rem;
   top: 10%;
   left: 50%;
   transform: translate(-50%, 0%);
@@ -257,33 +264,56 @@
 .actorBox {
   display: flex;
   width: 90%;
-  height: 40vh;
+  height: 50%;
   border: 2px black solid;
   margin: 1px;
   border-radius: 5px;
 }
 
-.actorImg {
-  width: 10%;
-  justify-content: center;
+.actorInfo {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
 }
 
-.actorImg > img {
-  max-width: 90%;
+.actorPicture {
+  max-width: 100%;
   max-height: inherit;
   padding: 2em;
-  object-fit: cover;
   transition: 0.3s all ease-in-out;
-  border-radius: 5px;
+  border-radius: 0.4em;
 }
 
-.actorImg > div {
+.actorPicture:hover {
+  scale: 1.1;
+  opacity: 0.9;
+}
+
+.actorPicture > img {
+  max-width: 100%;
+  max-height: 100%;
+  transition: 0.3s all ease-in-out;
+  border-radius: 0.4em;
+}
+.actorPicture > div {
   text-align: center;
   color: white;
+  
+}
+
+.actorName {
+  color: white;
+  margin-top: -1em;
 }
 
 .actorMovies {
+  height: 20%;
   display: flex;
   margin-left: 10%;
+}
+
+.actorMovies > .movieBox:hover {
+  scale: 1.1;
 }
