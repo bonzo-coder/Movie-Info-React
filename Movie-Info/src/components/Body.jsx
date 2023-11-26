@@ -1,30 +1,32 @@
-import Movie from './Movie'
+/* eslint-disable react/prop-types */
+
 import React from 'react'
 import movieDataProcess from '../functions/movieData'
 import actorDataProcess from '../functions/actorData'
 
 export default function Body (props) {
 
-    const [renderData, setRenderData] = React.useState()
+    const [renderDataPage, setRenderDataPage] = React.useState()
 
         React.useEffect ( () => {
         if (props.searchFor == "movie") {
-            setRenderData(movieDataProcess(props))
+            setRenderDataPage(movieDataProcess(props))
         } else {
-            setRenderData(actorDataProcess(props))
+            setRenderDataPage(actorDataProcess(props))
         }
     
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.data])
 
-    console.log(renderData)
+    console.log(renderDataPage)
 
     return (
         <div>
             <div className="movies">
-                {props.searchFor == "movie" && renderData}
+                {props.searchFor == "movie" && renderDataPage}
             </div>
             <div className="actors">
-                {props.searchFor == "person" && renderData}
+                {props.searchFor == "person" && renderDataPage}
             </div>
         </div>
     )
