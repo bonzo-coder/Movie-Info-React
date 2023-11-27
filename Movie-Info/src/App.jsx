@@ -8,7 +8,7 @@ import handleApiData from './functions/handleApiData'
 import movieDataProcess from './functions/movieData'
 import actorDataProcess from './functions/actorData'
 import handleRenderData from './functions/handleRenderData'
-
+import _ from 'lodash'; 
 
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
   const [dataPage, setDataPage] = React.useState(1)
   const [totalPages,setTotalPages] = React.useState()
   const [renderData, setRenderData] = React.useState([])
+  const [isFetching, setIsFetching] = React.useState(false);
 
   // movie or actor state
   const [searchFor, setSearchFor] = React.useState("movie")
@@ -88,6 +89,7 @@ function App() {
 // Changes searchDetails - query page out of totalPages
   React.useEffect(() => {
     setSearchDetails( prev => {
+      console.log("bylem w searchDet change")
       return {
         ...prev,
         dataPage: dataPage
@@ -96,16 +98,59 @@ function App() {
   }, [dataPage]);
 
 
-  React.useEffect(() => {
-    window.addEventListener('scroll', function(){setTimeout(handleScroll, 2000)});
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  window.onscroll = function() {
 
-  function handleScroll() {
-    if ((window.innerHeight + window.scrollY) >= 0.9*(document.body.offsetHeight - 2)) return;
+    // @var int totalPageHeight
+    var totalPageHeight = document.body.scrollHeight; 
+
+    // @var int scrollPoint
+    var scrollPoint = window.scrollY + window.innerHeight;
+
+    // check if we hit the bottom of the page
+    if(scrollPoint >= totalPageHeight)
+    {
+        console.log("at the bottom");
+    }
+}
+
+
+  const handleScroll = () => {
+    if (window.innerHeight + document.documentElement.scrollTop !== (document.documentElement.offsetHeight -4)|| isFetching) {
+      return;
+    }
     console.log("next page")
-    setNumberOfScroll(prev => prev+1)
-  }
+      if (numberOfScroll < totalPages) {
+      setNumberOfScroll(prev => prev+1) 
+      } 
+      setIsFetching(true)
+  };
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isFetching]);
+
+
+  // React.useEffect(() => {
+  //   if (!fired) {
+  //     window.addEventListener('scroll', handleScroll);
+  //   }
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, [dataToRender]);
+
+  // function handleScroll() {
+  //   let debounce_fun = _.debounce(function () {
+  //     if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 2)) return;
+  //     console.log("next page")
+  //     if (numberOfScroll < totalPages) {
+  //     fired = true;
+  //     setNumberOfScroll(prev => prev+1) 
+  //   } 
+  //   setIsFetching(true)
+  // }, 1000);
+   
+  // debounce_fun();
+  // }
     //MOVIE DATA
 
     async function getData () {
@@ -128,6 +173,7 @@ function App() {
       console.log(correctDataToRender)
       // const dataFactory = await movieDataProcess(correctDataToRender)
       setDataToRender(correctDataToRender)
+      
     }
     React.useEffect ( () => {  
       // //let url = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}`;
@@ -217,11 +263,14 @@ function App() {
         return
       } else if ( dataToRender?.length == 0) {
         return
-      } else if(dataCount < (numberOfScroll * elementsOnPage) ) {
-        console.log("wpadlem tu")
-        setDataPage( prev => prev + 1 )
+      } else if(dataCount < ((numberOfScroll+1) * elementsOnPage) ) {
+          console.log("wpadlem tu")
+          if ( dataPage < totalPages) {
+            setDataPage( prev => prev + 1 )
+            setIsFetching(false)
+          }
       } 
-    }, [dataCount])
+    }, [dataCount, numberOfScroll])
     console.log(totalPages)
     console.log(dataCount)
     console.log(renderData)
@@ -231,6 +280,10 @@ function App() {
     console.log(dataPage)
     console.log(renderState)
     console.log(numberOfScroll)
+    console.log(searchDetails)
+    console.log((numberOfScroll+1) * elementsOnPage)
+    console.log(totalPages)
+    console.log(isFetching)
   return (
     <>
       <div>
@@ -240,6 +293,7 @@ function App() {
           {renderState && <Body 
             data={dataToRender}
             searchFor={searchFor}/>}
+          {isFetching && <p>Loading...</p>}
       </div>
     </>
   )

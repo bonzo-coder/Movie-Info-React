@@ -6,16 +6,16 @@ export default function handleApiData (arrayNewData, arrayOldData) {
    
     
     let newArray = arrayOldData; 
-    const dataArray = arrayNewData.map( movie => {
+    const dataArray = arrayNewData.map( data => {
         console.log("byłem")
-        const imageUrl = "https://image.tmdb.org/t/p/w500" + movie.poster_path;
-        const releaseYear = movie.release_date?.slice(0,4);
+        const imageUrl = "https://image.tmdb.org/t/p/w500" + data.poster_path;
+        const releaseYear = data.release_date?.slice(0,4);
         // Stop if ID already in array
-        if ( Array.prototype.includes.call(newArray, movie.id) ) {
+        if ( Array.prototype.includes.call(newArray, data.id) ) {
             return
         }
         if( imageUrl !== "https://image.tmdb.org/t/p/w500null" && releaseYear !== null) {
-            newArray.push(movie)
+            newArray.push(data)
         } else {
             return
         }
