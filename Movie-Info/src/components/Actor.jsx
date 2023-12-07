@@ -1,19 +1,19 @@
-import Movie from "./Movie"
+import {forwardRef} from 'react'
 
-export default function Actor (props) {
+const Actor = forwardRef(function Actor(props, ref) {
     
 
-    // const openInNewTab = () => {
-    //     window.open(`https://www.imdb.com/title/${props.imdbID}/`, "_blank", 'noopener,noreferrer');
-    //   };
+    const openInNewTab = () => {
+        window.open(`https://www.themoviedb.org/person/${props.actorId}/`, "_blank", 'noopener,noreferrer');
+    };
     
     
 
     return (
-        <div className="actorBox">
+        <div ref={ref} className="actorBox">
             <div className="actorInfo" >
                 <div className="actorPicture">
-                    <img  src={props.imageUrl}/>
+                    <img  src={props.imageUrl} onClick={() => openInNewTab()}/>
                 </div>
                 <div className="actorName">{props.name}</div>
             </div>
@@ -27,4 +27,6 @@ export default function Actor (props) {
             
           
     )
-} 
+})
+
+export default Actor

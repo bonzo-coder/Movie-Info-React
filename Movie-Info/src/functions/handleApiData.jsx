@@ -3,10 +3,10 @@ export default function handleApiData (arrayNewData, arrayOldData) {
 
     console.log(arrayNewData)
     console.log(arrayOldData)
-   
+    const indexStartPlace = arrayOldData.length;
     
     let newArray = arrayOldData; 
-    const dataArray = arrayNewData.map( data => {
+    const dataArray = arrayNewData.map( (data, index) => {
         console.log("byłem")
         const imageUrl = "https://image.tmdb.org/t/p/w500" + data.poster_path;
         const releaseYear = data.release_date?.slice(0,4);
@@ -15,7 +15,7 @@ export default function handleApiData (arrayNewData, arrayOldData) {
             return
         }
         if( imageUrl !== "https://image.tmdb.org/t/p/w500null" && releaseYear !== null) {
-            newArray.push(data)
+            newArray.push({...data, index: index + indexStartPlace})
         } else {
             return
         }

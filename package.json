@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "react-intersection-observer": "^9.5.3"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.0"
+  }
+}

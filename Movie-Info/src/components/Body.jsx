@@ -4,19 +4,20 @@ import React from 'react'
 import movieDataProcess from '../functions/movieData'
 import actorDataProcess from '../functions/actorData'
 
-export default function Body (props) {
-
+const Body = React.forwardRef(function Body(props, ref) {
+    console.log(props)
+    console.log(ref)
     const [renderDataPage, setRenderDataPage] = React.useState()
 
         React.useEffect ( () => {
         if (props.searchFor == "movie") {
-            setRenderDataPage(movieDataProcess(props))
+            setRenderDataPage(movieDataProcess(props, ref))
         } else {
-            setRenderDataPage(actorDataProcess(props))
+            setRenderDataPage(actorDataProcess(props, ref))
         }
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props.data])
+    }, [props])
 
     console.log(renderDataPage)
 
@@ -30,4 +31,6 @@ export default function Body (props) {
             </div>
         </div>
     )
-}
+})
+
+export default Body

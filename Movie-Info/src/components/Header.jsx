@@ -6,16 +6,20 @@ export default function Header (props) {
     
     const inputRef = React.useRef(null);
 
-  React.useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, []);
+    React.useEffect(() => {
+        if (inputRef.current) {
+        inputRef.current.focus();
+        }
+    }, []);
+
+    function refreshPage() {
+        window.location.reload(false);
+      }
 
     return (
         <div className='searchBar'>
 
-            <div className='logo'>
+            <div className='logo' value='' onClick={refreshPage}>
                 <img src={logo} />
             </div>
             <div className='inputs'>

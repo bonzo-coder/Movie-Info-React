@@ -1,17 +1,17 @@
 import Actor from '../components/Actor'
 import Movie from '../components/Movie'
 
-export default function actorDataProcess (props) {
+export default function actorDataProcess (props, ref) {
 
     const actorData = props.data?.map( actor => {
         
         if (actor.popularity < 1) {
             return
         }
-       
+        
         const name = actor.name;
+        const index = actor.index;
         const imageUrl = "https://image.tmdb.org/t/p/w500" + actor.profile_path;
-        //const imdbID = movie.imdbID;
         const actorId = actor.id;
         const knownFor = actor.known_for.map( (movie) => {
             const title = movie.original_title;
@@ -19,7 +19,7 @@ export default function actorDataProcess (props) {
             const movieMark = movie.vote_average;
             const posterUrl= "https://image.tmdb.org/t/p/w500" + movie.poster_path;
             const movieId = movie.id;
-
+            
             return (
                 <Movie
                     title={title}
@@ -27,6 +27,7 @@ export default function actorDataProcess (props) {
                     imageUrl={posterUrl}
                     reviewMark={movieMark}
                     key={movieId}
+                    movieId={movieId}
                 />
             )
 
@@ -47,11 +48,11 @@ export default function actorDataProcess (props) {
                 imageUrl={imageUrl}
                 knownFor={knownFor}
                 key={actorId}
+                actorId={actorId}
+                ref={props.data.length === (index + 1) ? ref : null}
             />
         )
     })
 
-    console.log(actorData)
     return actorData
-
 }
