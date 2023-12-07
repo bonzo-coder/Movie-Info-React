@@ -29,6 +29,7 @@ function App() {
   const [hasMoreData, setHasMoreData] = React.useState(false)
   console.log(searchDetails)
 
+  //handle input
   const handleChange = (event) => {
     setDataPage(1)
     setDataToRender([])
@@ -36,7 +37,7 @@ function App() {
     console.log(event)
     setSearch(event.target.value) 
   }
-
+  //handle select
   const handleSearchType = (event) => {
     setDataPage(1)
     setDataToRender([])
