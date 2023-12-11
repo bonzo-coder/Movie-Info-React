@@ -1,14 +1,12 @@
+/* eslint-disable react/prop-types */
 import {forwardRef} from 'react'
 
 const Actor = forwardRef(function Actor(props, ref) {
     
-
     const openInNewTab = () => {
         window.open(`https://www.themoviedb.org/person/${props.actorId}/`, "_blank", 'noopener,noreferrer');
     };
     
-    
-
     return (
         <div ref={ref} className="actorBox">
             <div className="actorInfo" >
@@ -20,12 +18,7 @@ const Actor = forwardRef(function Actor(props, ref) {
             <div className="actorMovies">
                 {props.knownFor}
             </div>
-            
-        </div>
-            
-                
-            
-          
+        </div>  
     )
 })
 

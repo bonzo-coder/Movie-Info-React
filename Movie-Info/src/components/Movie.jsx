@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {forwardRef} from 'react'
 
 const Movie = forwardRef(function Movie(props, ref) {

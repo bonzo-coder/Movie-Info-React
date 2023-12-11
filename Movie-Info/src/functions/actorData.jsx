@@ -5,7 +5,7 @@ export default function actorDataProcess (props, ref) {
 
     const actorData = props.data?.map( actor => {
         
-        if (actor.popularity < 1) {
+        if (actor.popularity < 0.8) {
             return
         }
         

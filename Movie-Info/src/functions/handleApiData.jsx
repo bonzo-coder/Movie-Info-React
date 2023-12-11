@@ -1,8 +1,5 @@
-
 export default function handleApiData (arrayNewData, arrayOldData) {
 
-    console.log(arrayNewData)
-    console.log(arrayOldData)
     const indexStartPlace = arrayOldData.length;
     
     let newArray = arrayOldData; 
@@ -21,8 +18,5 @@ export default function handleApiData (arrayNewData, arrayOldData) {
         }
    })
    
-   console.log(newArray)
-   console.log(newArray.length)
-   console.log (typeof newArray)
    return newArray
 }

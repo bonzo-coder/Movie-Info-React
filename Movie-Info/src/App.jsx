@@ -5,7 +5,7 @@ import React from 'react'
 import Header from './components/Header'
 import Body from './components/Body'
 import handleApiData from './functions/handleApiData'
-import handleRenderData from './functions/handleRenderData'
+
 
 function App() {
   const apiKey = 'dcea23fcd1a781899697fca8975d293f';
@@ -27,7 +27,7 @@ function App() {
 
   })
   const [hasMoreData, setHasMoreData] = React.useState(false)
-  console.log(searchDetails)
+  
 
   //handle input
   const handleChange = (event) => {
